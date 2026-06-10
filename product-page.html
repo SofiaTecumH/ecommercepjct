@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitor Hyundai Excavadora – Ficha de Producto</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brand: #CC0000;
+    --brand-dark: #990000;
+    --brand-light: #fff5f5;
+    --text-primary: #111;
+    --text-secondary: #555;
+    --text-muted: #888;
+    --border: #e0e0e0;
+    --bg-page: #f6f6f6;
+    --bg-surface: #ffffff;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --star: #e47911;
+  }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: #232f3e;
+    color: #fff;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+  }
+  .topbar-logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #fff;
+    margin-right: 12px;
+  }
+  .topbar-logo span { color: var(--brand); }
+  .topbar-search {
+    flex: 1;
+    display: flex;
+    max-width: 520px;
+  }
+  .topbar-search input {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    font-size: 14px;
+    outline: none;
+  }
+  .topbar-search button {
+    background: var(--brand);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+  }
+  .topbar-actions {
+    display: flex;
+    gap: 20px;
+    margin-left: auto;
+    font-size: 13px;
+    color: #ccc;
+    white-space: nowrap;
+  }
+  .topbar-actions span { cursor: pointer; }
+  .topbar-actions span:hover { color: #fff; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    background: #fff;
+    padding: 8px 24px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .breadcrumb a { color: #0066c0; text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { margin: 0 5px; }
+
+  /* ── MAIN LAYOUT ── */
+  .page {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 380px 1fr 220px;
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* ── GALLERY COLUMN ── */
+  .gallery-col { position: sticky; top: 20px; }
+
+  .main-image-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .main-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+  }
+  .main-image-box .placeholder-img {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #aaa;
+    font-size: 13px;
+    padding: 20px;
+  }
+  .placeholder-img svg { opacity: 0.35; }
+  .badge-new {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--brand);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .thumbnails {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .thumb {
+    width: 64px;
+    height: 64px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--bg-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .thumb.active { border-color: var(--brand); }
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+  }
+  .thumb .ph-thumb {
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: #aaa;
+    text-align: center;
+    padding: 4px;
+  }
+
+  .gallery-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 8px;
+    border: 1px dashed #ccc;
+    border-radius: var(--radius-sm);
+    background: #fffbe6;
+    color: #7a5c00;
+  }
+
+  /* ── PRODUCT DETAILS COLUMN ── */
+  .details-col {}
+
+  .product-brand {
+    font-size: 12px;
+    color: #0066c0;
+    margin-bottom: 4px;
+    text-decoration: none;
+  }
+  .product-brand:hover { text-decoration: underline; }
+
+  .product-title {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .stars {
+    color: var(--star);
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+  .rating-num { font-size: 13px; color: #0066c0; cursor: pointer; }
+  .rating-count { font-size: 13px; color: var(--text-muted); }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+
+  /* ── PRICE BLOCK ── */
+  .price-block { margin-bottom: 14px; }
+  .price-label { font-size: 12px; color: var(--text-muted); }
+  .price-main { font-size: 28px; font-weight: 700; color: #111; }
+  .price-main sup { font-size: 15px; font-weight: 600; vertical-align: super; }
+  .price-main .cents { font-size: 17px; vertical-align: super; }
+  .price-list {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .price-list s { color: #888; }
+  .price-save {
+    display: inline-block;
+    background: #fff3cd;
+    color: #856404;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+
+  /* ── COMPATIBILITY ALERT ── */
+  .compat-alert {
+    background: #fffbe6;
+    border: 1px solid #f5c842;
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #7a5c00;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .compat-alert strong { display: block; margin-bottom: 2px; color: #5a3e00; }
+
+  /* ── VARIANTS ── */
+  .variants-section { margin-bottom: 16px; }
+  .variants-label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .variants-label span { font-weight: 400; color: var(--text-secondary); }
+  .variant-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    background: var(--bg-surface);
+    transition: border-color .15s, background .15s;
+  }
+  .chip:hover { border-color: #888; }
+  .chip.selected {
+    border-color: var(--brand);
+    background: var(--brand-light);
+    color: var(--brand);
+    font-weight: 600;
+  }
+  .chip.unavailable {
+    color: #bbb;
+    text-decoration: line-through;
+    cursor: default;
+  }
+
+  /* ── SPECS TABLE ── */
+  .specs-section { margin-bottom: 16px; }
+  .specs-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .specs-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .specs-table tr { border-bottom: 1px solid var(--border); }
+  .specs-table tr:last-child { border-bottom: none; }
+  .specs-table td { padding: 6px 4px; vertical-align: top; }
+  .specs-table td:first-child {
+    width: 45%;
+    color: var(--text-secondary);
+    padding-right: 12px;
+  }
+  .specs-table td:last-child { font-weight: 500; }
+
+  /* ── FEATURES ── */
+  .features-section { margin-bottom: 16px; }
+  .features-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .feature-list { list-style: none; }
+  .feature-list li {
+    font-size: 13px;
+    padding: 4px 0;
+    padding-left: 18px;
+    position: relative;
+    color: var(--text-primary);
+  }
+  .feature-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: 700;
+  }
+
+  /* ── ABOUT ── */
+  .about-section { margin-bottom: 16px; }
+  .about-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .about-text { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+  /* ── BUY BOX COLUMN ── */
+  .buybox {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 18px 16px;
+    position: sticky;
+    top: 20px;
+  }
+  .buybox-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+  }
+  .buybox-price sup { font-size: 13px; vertical-align: super; }
+  .buybox-stock {
+    font-size: 14px;
+    color: #007600;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .buybox-stock.low { color: #c7511f; }
+
+  .qty-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .qty-label { font-size: 13px; color: var(--text-secondary); }
+  .qty-select {
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    background: var(--bg-surface);
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: filter .15s;
+  }
+  .btn-primary:hover { filter: brightness(0.95); }
+
+  .btn-add-cart {
+    background: #ffd814;
+    color: #111;
+  }
+  .btn-buy-now {
+    background: #ffa41c;
+    color: #111;
+  }
+
+  .buybox-info {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-top: 10px;
+  }
+  .buybox-info strong { color: var(--text-primary); }
+
+  .secure-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── REVIEWS SECTION ── */
+  .reviews-section {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    padding: 0 16px;
+    grid-column: 1 / -1;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start;
+    margin-top: 16px;
+  }
+  .reviews-summary {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+  }
+  .reviews-big-num {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-primary);
+  }
+  .reviews-big-stars { color: var(--star); font-size: 20px; margin: 6px 0; }
+  .reviews-total { font-size: 12px; color: var(--text-muted); }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #0066c0;
+    cursor: pointer;
+  }
+  .bar-track {
+    flex: 1;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--star);
+    border-radius: 5px;
+  }
+  .bar-pct { min-width: 28px; text-align: right; color: var(--text-muted); }
+
+  .review-cards { display: flex; flex-direction: column; gap: 16px; }
+  .review-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+  }
+  .reviewer-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .reviewer-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #555;
+  }
+  .reviewer-name { font-weight: 600; font-size: 14px; }
+  .reviewer-date { font-size: 12px; color: var(--text-muted); }
+  .review-stars { color: var(--star); font-size: 14px; margin-bottom: 4px; }
+  .review-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .review-body { font-size: 13px; color: var(--text-secondary); }
+  .verified-badge {
+    font-size: 11px;
+    color: #c7511f;
+    margin-top: 6px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #232f3e;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    margin-top: 24px;
+  }
+  footer a { color: #ccc; text-decoration: none; margin: 0 8px; }
+  footer a:hover { color: #fff; }
+
+  /* ── SECTION HEADERS ── */
+  .section-heading {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--brand);
+    display: inline-block;
+  }
+
+  @media (max-width: 900px) {
+    .page { grid-template-columns: 1fr 1fr; }
+    .buybox { grid-column: 1 / -1; position: static; }
+    .gallery-col { position: static; }
+  }
+  @media (max-width: 600px) {
+    .page { grid-template-columns: 1fr; }
+    .topbar-search { max-width: 100%; flex: 1; }
+    .topbar-actions { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-logo">K<span>60</span></div>
+  <div class="topbar-search">
+    <input type="text" placeholder="Buscar productos, marcas y más...">
+    <button>🔍</button>
+  </div>
+  <div class="topbar-actions">
+    <span>🔔 Notificaciones</span>
+    <span>👤 Mi cuenta</span>
+    <span>🛒 Carrito (1)</span>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <a href="#">Inicio</a><span>›</span>
+  <a href="#">Maquinaria Industrial</a><span>›</span>
+  <a href="#">Repuestos Excavadoras</a><span>›</span>
+  <a href="#">Monitores y Pantallas</a><span>›</span>
+  Monitor Hyundai Excavadora
+</nav>
+
+<!-- MAIN PRODUCT SECTION -->
+<main class="page">
+
+  <!-- GALLERY COLUMN -->
+  <div class="gallery-col">
+    <div class="main-image-box">
+      <div class="badge-new">Nuevo</div>
+      <img src="img01.png" alt="Monitor Hyundai Excavadora">
+    </div>
+
+    <div class="thumbnails">
+      <div class="thumb active" data-src="img01.png"><img src="img01.png" alt="Vista 1"></div>
+      <div class="thumb" data-src="img02.png"><img src="img02.png" alt="Vista 2"></div>
+      <div class="thumb" data-src="img03.png"><img src="img03.png" alt="Vista 3"></div>
+      <div class="thumb" data-src="img04.png"><img src="img04.png" alt="Vista 4"></div>
+      <div class="thumb" data-src="img05.png"><img src="img05.png" alt="Vista 5"></div>
+    </div>
+
+
+  </div>
+
+  <!-- DETAILS COLUMN -->
+  <div class="details-col">
+    <a class="product-brand" href="#">Hyundai Construction Equipment</a>
+    <h1 class="product-title">
+      Monitor LCD Hyundai para Excavadora R210-9 / R250-9 / R300-9 – Pantalla de Control de Cabina, Genérico
+    </h1>
+
+    <div class="rating-row">
+      <span class="stars">★★★★☆</span>
+      <span class="rating-num">4.3</span>
+      <span class="rating-count">(28 reseñas)</span>
+    </div>
+
+    <hr class="divider">
+
+    <!-- PRICE -->
+    <div class="price-block">
+      <div class="price-label">Precio:</div>
+      <div class="price-main"><sup>Q</sup>14,399<span class="cents">.97</span></div>
+      <div class="price-list">Precio de lista: <s>Q17,490.00</s> <span class="price-save">Ahorra 16%</span></div>
+    </div>
+
+    <!-- COMPATIBILITY ALERT -->
+    <div class="compat-alert">
+      <span>⚠️</span>
+      <div>
+        <strong>Verifica compatibilidad antes de comprar</strong>
+        Confirma el número de serie de tu excavadora. Compatible con modelos R210-9, R250-9 y R300-9 fabricados entre 2015–2023.
+      </div>
+    </div>
+
+    <!-- VARIANTS -->
+    <div class="variants-section">
+      <div class="variants-label">Modelo: <span>R210-9</span></div>
+      <div class="variant-chips">
+        <div class="chip selected">R210-9</div>
+        <div class="chip">R250-9</div>
+        <div class="chip">R300-9</div>
+        <div class="chip unavailable">R160-9</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SPECS -->
+    <div class="specs-section">
+      <div class="specs-title">Especificaciones técnicas</div>
+      <table class="specs-table">
+        <tr><td>Marca</td><td>Genérica</td></tr>
+        <tr><td>Tipo de pantalla</td><td>LCD TFT Color 7"</td></tr>
+        <tr><td>Resolución</td><td>800 × 480 px</td></tr>
+        <tr><td>Medidas</td><td>19.5 cm de ancho x 14.5 cm de alto</td></tr>
+        <tr><td>Medidas de la pantalla<td>15 cm de ancho x 9 cm de alto</td></tr>
+        <tr><td>Voltaje operativo</td><td>12V / 24V DC</td></tr>
+        <tr><td>Número de parte OEM</td><td></td></tr>
+        <tr><td>Garantía</td><td>12 meses</td></tr>
+        <tr><td>Origen</td><td>China</td></tr>
+        <tr><td>Peso</td><td></td></tr>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <!-- FEATURES -->
+    <div class="features-section">
+      <div class="features-title">Características principales</div>
+      <ul class="feature-list">
+        <li>Pieza original OEM — ajuste perfecto sin modificaciones</li>
+        <li>Visualización en tiempo real de presión hidráulica, temperatura y RPM</li>
+        <li>Retroiluminación regulable para uso en exterior e interior de cabina</li>
+        <li>Conexión plug-and-play con el arnés original de la excavadora</li>
+        <li>Resistente a vibración, polvo y humedad (IP54)</li>
+        <li>Soporte de diagnóstico DTC integrado</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ABOUT -->
+    <div class="about-section">
+      <div class="about-title">Sobre este producto</div>
+      <p class="about-text">
+        Este monitor LCD es el componente de visualización central de la cabina del operador en excavadoras Hyundai serie 220. 
+        Muestra parámetros críticos del sistema en tiempo real y emite alertas de advertencia ante condiciones anómalas, 
+        contribuyendo a la seguridad operacional y al mantenimiento preventivo del equipo. 
+        La pieza cumple con las especificaciones exactas de fábrica Hyundai y no requiere calibración adicional tras su instalación.
+      </p>
+    </div>
+  </div>
+
+  <!-- BUY BOX COLUMN -->
+  <aside class="buybox">
+    <div class="buybox-price"><sup>Q</sup>14,399.97</div>
+    <div class="buybox-stock">✓ En stock — Listo para envío</div>
+
+    <div class="qty-row">
+      <span class="qty-label">Cant.:</span>
+      <select class="qty-select">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+      </select>
+    </div>
+
+    <button class="btn-primary btn-add-cart">🛒 Agregar al carrito</button>
+    <button class="btn-primary btn-buy-now">⚡ Comprar ahora</button>
+
+    <div class="buybox-info">
+      <strong>Envío:</strong> Gratis a toda la república<br>
+      <strong>Entrega estimada:</strong> 3–5 días hábiles<br>
+      <strong>Devoluciones:</strong> 30 días sin costo
+    </div>
+
+    <div class="secure-badge">
+      Pago seguro · SSL certificado
+    </div>
+  </aside>
+
+</main>
+
+<!-- REVIEWS -->
+<section style="max-width:1100px; margin:0 auto 40px; padding:0 16px;">
+  <span class="section-heading">Reseñas de clientes</span>
+  <div class="reviews-grid">
+
+    <!-- SUMMARY -->
+    <div class="reviews-summary">
+      <div class="reviews-big-num">4.3</div>
+      <div class="reviews-big-stars">★★★★☆</div>
+      <div class="reviews-total">28 calificaciones globales</div>
+      <div style="margin-top:14px;">
+        <div class="bar-row"><span>5★</span><div class="bar-track"><div class="bar-fill" style="width:54%"></div></div><span class="bar-pct">54%</span></div>
+        <div class="bar-row"><span>4★</span><div class="bar-track"><div class="bar-fill" style="width:25%"></div></div><span class="bar-pct">25%</span></div>
+        <div class="bar-row"><span>3★</span><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div><span class="bar-pct">11%</span></div>
+        <div class="bar-row"><span>2★</span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div><span class="bar-pct">4%</span></div>
+        <div class="bar-row"><span>1★</span><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div><span class="bar-pct">6%</span></div>
+      </div>
+    </div>
+
+    <!-- REVIEW CARDS -->
+    <div class="review-cards">
+      <div class="review-card">
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">JM</div>
+          <div>
+            <div class="reviewer-name">José M.</div>
+            <div class="reviewer-date">15 de abril, 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-title">Instalación perfecta, ajuste exacto</div>
+        <p class="review-body">El monitor llegó bien embalado. La instalación tomó menos de 20 minutos siguiendo el manual del equipo. Lleva 3 meses funcionando sin problemas en sitio de construcción.</p>
+        <div class="verified-badge">✓ Compra verificada</div>
+      </div>
+
+      <div class="review-card">
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">AL</div>
+          <div>
+            <div class="reviewer-name">Ana L.</div>
+            <div class="reviewer-date">2 de marzo, 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★☆</div>
+        <div class="review-title">Buen producto, envío un poco lento</div>
+        <p class="review-body">El monitor es exactamente el original. Tardó 6 días en llegar en lugar de los 5 prometidos, pero llegó en perfecto estado. El equipo volvió a funcionar al 100%.</p>
+        <div class="verified-badge">✓ Compra verificada</div>
+      </div>
+
+      <div class="review-card">
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">RG</div>
+          <div>
+            <div class="reviewer-name">Roberto G.</div>
+            <div class="reviewer-date">18 de enero, 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★☆☆</div>
+        <div class="review-title">Funcional pero sin manual en español</div>
+        <p class="review-body">El producto funciona bien. Mi única queja es que no incluye guía de instalación en español. Tuve que buscar el procedimiento por mi cuenta. Una vez instalado, opera excelente.</p>
+        <div class="verified-badge">✓ Compra verificada</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:8px;">
+    <a href="#">Condiciones de uso</a>
+    <a href="#">Privacidad</a>
+    <a href="#">Ayuda</a>
+    <a href="#">Contacto</a>
+  </p>
+  <p>© 2025 miTienda · Boceto para presentación — reemplazar datos y fotografías con contenido real</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.chip:not(.unavailable)').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.closest('.variant-chips').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      chip.closest('.variants-section').querySelector('span').textContent = chip.textContent;
+    });
+  });
+
+  const mainImg = document.querySelector('.main-image-box img');
+  document.querySelectorAll('.thumb').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.thumb').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      if (mainImg && t.dataset.src) mainImg.src = t.dataset.src;
+    });
+  });
+</script>
+</body>
+</html>
